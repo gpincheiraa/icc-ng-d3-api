@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
 
 var voteSchema = new Schema({
   idOption:     { type: Number },
-  comment:      { type: String }   
+  comment:      { type: String } ,
+  name:         { type: String } ,  
 },{ versionKey: false });
 
 module.exports = mongoose.model('Vote', voteSchema);
