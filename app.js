@@ -2,7 +2,8 @@ var express = require("express"),
     app = express(),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override");
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -42,6 +43,6 @@ mongoose.connect('mongodb://localhost/surveys', function(err, res) {
 });
 
 
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log("Node server running on http://localhost:3000");
 });
