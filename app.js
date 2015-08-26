@@ -34,7 +34,7 @@ app.use('/api', surveyOptions);
 
 
 //Conexión a base de datos MongoDB
-mongoose.connect('mongodb://gpincheiraa:chalo1986@ds035533.mongolab.com:35533/heroku_gp8zdj88', function(err, res) {
+mongoose.connect('mongodb://admin:admin@ds035533.mongolab.com:35533/heroku_gp8zdj88', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
   } else {
