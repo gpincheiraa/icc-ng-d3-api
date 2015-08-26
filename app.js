@@ -15,8 +15,14 @@ router.get('/', function(req, res) {
   res.send("<h1>API REST ESCRITA EN NODE UTILIZANDO EXPRESS + MONGOOSE + MONGODB</h1>");
 });
 
-app.use(router);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+
+app.use(router);
 // Import Models and controllers
 var surveyOptionModel = require('./models/surveyOption')(app, mongoose),
     SurveyOptionsCtrl = require('./controllers/surveyOptions'),
