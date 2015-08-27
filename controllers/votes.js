@@ -26,13 +26,34 @@ exports.newVote = function(req, res) {
 
 exports.findAllVotes = function(req, res) {
 
-  Vote.find(function(err, options) {
+  // Vote.find(function(err, options) {
+  //   if(!err) {
+  //     res.send(options);
+  //   } else {
+  //     console.log('ERROR: ' + err);
+  //   }
+  // });
+  var queryOptions = {
+    "key": {
+      "idOption": true
+    },
+    "initial": {
+      "count": 0
+    },
+    "reduce": function(curr, prev) {
+      if (curr.idOption != null) 
+        prev.count++
+    }
+  };
+  
+  Vote.group(queryOptions,function(err, options) {
     if(!err) {
       res.send(options);
     } else {
       console.log('ERROR: ' + err);
     }
   });
+
 };
 
 
